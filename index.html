@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>省市县三级联动</title>
+    <link rel="stylesheet" href="">
+    <style>
+    * {
+        padding: 0;
+        margin: 0;
+        font-size: 12px;
+        list-style-type: none;
+    }
+    
+    span.name {
+        display: block;
+        width: 75px;
+        text-align: right;
+        line-height: 30px;
+    }
+    
+    .gf-select {
+        float: left;
+        width: 155px;
+        margin-right: 10px;
+        position: relative;
+    }
+    
+    .gf-select ul li:hover {
+        background: #3498db;
+        color: #fff;
+        cursor: pointer;
+    }
+    
+    .gf-select span {
+        width: 120px;
+        padding: 8px 27px 8px 10px;
+        display: block;
+        border: 1px solid #ddd;
+        cursor: pointer;
+    }
+    
+    .gf-select span em {
+        font-style: normal;
+    }
+    
+    .gf-select .icon-jt {
+        background: url(./images/down-jt.jpg) center right no-repeat;
+        width: 12px;
+        height: 6px;
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        margin-top: -3px;
+    }
+    
+    .gf-select ul {
+        border: 1px solid #ddd;
+        position: absolute;
+        width: 100%;
+        top: 31px;
+        overflow-y: auto;
+        display: none;
+        background: #fff;
+    }
+    
+    .gf-select ul li {
+        border-bottom: 1px solid #ddd;
+        line-height: 30px;
+        padding-left: 10px;
+    }
+    
+    .gf-select ul li:last-child {
+        border-bottom: none;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="box" class="box"></div>
+</body>
+
+</html>
+<script src="./js/jquery.js"></script>
+<script src="./js/allCity.js"></script>
+<script src="./area.js"></script>
+<script>
+$(".box").selectArea({
+    dataType: "id"
+});
+			/*
+				domSelect: ["#province", "#city", "#area"],	//DOM节点，input['name']的值
+                domInit: ["请选择省份", "请选择城市", "请选择区县"],//初始化选择框中的值默认:["请选择省份", "请选择城市", "请选择区县"]
+                errorElement: ".error-area",//错误提示dom节点
+                dataType: "name",//input中value值类型，name:中文城市名,id:城市代码
+			*/
+</script>
