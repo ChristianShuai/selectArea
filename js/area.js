@@ -9,21 +9,26 @@
     function initHtml(initOption) {
         var domSelect = initOption.domSelect;
         var domInit = initOption.domInit;
+        var nameDomSelect = [];
+        $.each(domSelect,function(index,value){
+        	nameDomSelect[index] = value;
+        	nameDomSelect[index] = nameDomSelect[index].substring(1);
+        })
 
-        var initHtmlModule = `<div class="gf-select" id="${getDomId(domSelect[0])}">
-										<span><em>${domInit[0]}</em><i class="icon-jt"><input type="hidden" name="province" value=""/></i></span>
+        var initHtmlModule = `<div class="gf-select" id="${nameDomSelect[0]}">
+										<span><em>${domInit[0]}</em><i class="icon-jt"><input type="hidden" name="${nameDomSelect[0]}" value=""/></i></span>
 										<ul>
 											<li data-value="0">${domInit[0]}</li>
 										</ul>
 									</div>
-									<div class="gf-select" id="city">
-										<span><em>${domInit[1]}</em><i class="icon-jt"><input type="hidden" name="city" value=""/></i></span>
+									<div class="gf-select" id="${nameDomSelect[1]}">
+										<span><em>${domInit[1]}</em><i class="icon-jt"><input type="hidden" name="${nameDomSelect[1]}" value=""/></i></span>
 										<ul>
 											<li data-value="0">${domInit[1]}</li>
 										</ul>
 									</div>
-									<div class="gf-select" id="area">
-										<span><em>${domInit[2]}</em><i class="icon-jt"><input type="hidden" name="area" value=""/></i></span>
+									<div class="gf-select" id="${nameDomSelect[2]}">
+										<span><em>${domInit[2]}</em><i class="icon-jt"><input type="hidden" name="${nameDomSelect[2]}" value=""/></i></span>
 										<ul>
 											<li data-value="0">${domInit[2]}</li>
 										</ul>
@@ -74,7 +79,9 @@
                 for (var i = 0; i < data.length; i++) {
                     item.push('<li data-value="' + data[i][dataType] + '" name="' + data[i]["id"] + '">' + data[i]["name"] + '</li>');
                 }
+
                 $(opts.domSelect[1]).find("ul").html(item.join("\n"));
+               
             } else {
                 $(opts.domSelect[1]).find("ul").html(item.join("\n"));
             }
@@ -173,13 +180,11 @@
         });
     }
 
-    $.fn.selectArea = function(option) {
+    $.fn.selectArea = function(config) {
         //这里写插件所需要的代码
-        var option = getInitOption(option);
+        var option = getInitOption(config);
 
         $this = $(this);
-        console.log(option);
-        console.log($this);
         $this.append(initHtml(option));
 
         selectCity(option);

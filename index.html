@@ -85,9 +85,10 @@
 </html>
 <script src="./js/jquery.js"></script>
 <script src="./js/allCity.js"></script>
-<script src="./area.js"></script>
+<script src="./js/area.js"></script>
 <script>
-$(".box").selectArea({
-    dataType: "id"
+$("#box").selectArea({
+    domSelect:['#province','#city','#district']
 });
+
 </script>
